@@ -5,6 +5,7 @@ import sys
 
 # First Party Imports
 from fibonacci import Fibonacci
+from ui import UserInterface
 
 # Third Party Imorts
 
@@ -12,13 +13,26 @@ from fibonacci import Fibonacci
 def run():
     """method to run program"""
 
-    my_fibonacci = Fibonacci()
+    ui = UserInterface()
 
-    print("Give me the number of items in fibonacci sequence to solve for: ")
-    user_input = input(">")
+    running: bool = True
+    while running:
+        choice = ui.display_main_menu()
+        match int(choice):
+            # handles main menu functionality based on user input
+            case 0:
+                # talk about fibonacci sequence
+                ui.explain_fibonacci()
+                ui.press_any_key_to_continue()
 
-    my_list = [my_fibonacci.solver(item) for item in range(int(user_input))]
+            case 1:
+                # run original fibonacci algorithm
+                number_of_elements = ui.get_number_of_elements()
 
-    print(my_list)
+            case 2:
+                # run modified fibonacci algorithm
+                ...
 
-    sys.exit(0)
+            case 3:
+                # exit
+                sys.exit()
