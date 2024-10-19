@@ -12,7 +12,7 @@ class RecursiveFibonacci(AbstractFibonacci):
     """Recursive Fibonacci sequence class"""
 
     @property
-    def _name(self):
+    def name(self):
         return "Recursive"
 
     def _fibonacci_value_solver(self, n: int) -> int:

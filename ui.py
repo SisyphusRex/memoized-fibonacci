@@ -16,6 +16,7 @@ class UserInterface:
         "Run Fibonacci Recursive",
         "Run Fibonacci Iterative",
         "Compare Recursive and Iterative",
+        "Show n-Cycles Charts",
         "Exit",
     ]
 
@@ -44,9 +45,9 @@ class UserInterface:
         user_input: str = self.__while_waiting_for_good_elements_input()
         return user_input
 
-    def press_any_key_to_continue(self) -> None:
+    def press_enter_to_continue(self) -> None:
         """pauses printing to terminal until key pressed"""
-        print_green("Press any key to continue.")
+        print_green("Press Enter to continue.")
         user_input = input()
         print()
         if user_input:
@@ -55,12 +56,21 @@ class UserInterface:
     def print_sequence(self, *args) -> None:
         """method to print fibonacci sequence and stats"""
         print_magenta(args[0].sequence)
-        header: list[str] = ["Name", "Iterations/Recursions", "Runtime"]
+        header: list[str] = ["Name", "Cycles", "Runtime"]
         # TODO: I cannot figure out why the header does not match up with the string in the abstract __str__ call
-        print_blue(f"{header[0]:<15}{header[1]:^20}{header[2]:>15}")
+        print_blue(f"{header[0]:<15}{header[1]:>15}{header[2]:>15}")
+        # f"{self._name:<15}{self.__format_count(self.count):>20}{self.__format_time(self.timer):>15}"
         for index, value in enumerate(args):
             print(value)
         print()
+
+    def print_dict(self, algorithm_name: str, input_dict: dict) -> None:
+        """method to print dict"""
+        header: list[str] = ["n", "Cycles"]
+        print_magenta(algorithm_name)
+        print_blue(f"{header[0]:>10}{header[1]:>10}")
+        for key, value in input_dict.items():
+            print(f"{key:>10}{value:>10}")
 
     ####################
     # Private Methods   #

@@ -12,7 +12,7 @@ class IterativeFibonacci(AbstractFibonacci):
     """Iterative Fibonacci Solver class"""
 
     @property
-    def _name(self):
+    def name(self):
         return "Iterative"
 
     def _fibonacci_value_solver(self, n: int) -> int:
