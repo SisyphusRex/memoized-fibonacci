@@ -4,7 +4,7 @@
 import sys
 
 # First Party Imports
-from fibonacci import Fibonacci
+from recursive_fibonacci import RecursiveFibonacci
 from ui import UserInterface
 
 # Third Party Imorts
@@ -14,6 +14,7 @@ def run():
     """method to run program"""
 
     ui = UserInterface()
+    recursive_solver = RecursiveFibonacci()
 
     running: bool = True
     while running:
@@ -28,6 +29,7 @@ def run():
             case 1:
                 # run original fibonacci algorithm
                 number_of_elements = ui.get_number_of_elements()
+                print(recursive_solver.solver(int(number_of_elements)))
 
             case 2:
                 # run modified fibonacci algorithm
