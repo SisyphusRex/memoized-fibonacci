@@ -3,7 +3,7 @@
 # System Imports
 
 # First Party Imports
-from colors import print_blue, print_green, print_red, print_yellow
+from colors import print_blue, print_green, print_red, print_magenta
 
 # Third Party Imports
 
@@ -13,8 +13,9 @@ class UserInterface:
 
     MAIN_MENU: list[str] = [
         "Explain Fibonacci",
-        "Run Fibonacci Basic",
-        "Run Fibonacci Enhanced",
+        "Run Fibonacci Recursive",
+        "Run Fibonacci Iterative",
+        "Compare Recursive and Iterative",
         "Exit",
     ]
 
@@ -38,12 +39,12 @@ class UserInterface:
         )
         print()
 
-    def get_number_of_elements(self):
+    def get_number_of_elements(self) -> str:
         """method to get number of elements for fibonacci sequence"""
         user_input: str = self.__while_waiting_for_good_elements_input()
         return user_input
 
-    def press_any_key_to_continue(self):
+    def press_any_key_to_continue(self) -> None:
         """pauses printing to terminal until key pressed"""
         print_green("Press any key to continue.")
         user_input = input()
@@ -51,16 +52,26 @@ class UserInterface:
         if user_input:
             pass
 
+    def print_sequence(self, *args) -> None:
+        """method to print fibonacci sequence and stats"""
+        print_magenta(args[0].sequence)
+        header: list[str] = ["Name", "Iterations/Recursions", "Runtime"]
+        # TODO: I cannot figure out why the header does not match up with the string in the abstract __str__ call
+        print_blue(f"{header[0]:<15}{header[1]:^20}{header[2]:>15}")
+        for index, value in enumerate(args):
+            print(value)
+        print()
+
     ####################
     # Private Methods   #
     ####################
-    def __display_menu_base(self, menu: list[str]):
+    def __display_menu_base(self, menu: list[str]) -> None:
         """method to display main menu, get input, and return selection inside validation loop"""
         print_green("Type the number of your selection:")
         for index, text in enumerate(menu):
             print(f"{index:<3}{text}")
 
-    def __get_number_of_elements_base(self):
+    def __get_number_of_elements_base(self) -> None:
         """method to display get elements message"""
         print_green("How many Fibonacci elements do you want to display?")
 

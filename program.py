@@ -5,6 +5,7 @@ import sys
 
 # First Party Imports
 from recursive_fibonacci import RecursiveFibonacci
+from iterative_fibonacci import IterativeFibonacci
 from ui import UserInterface
 
 # Third Party Imorts
@@ -15,6 +16,7 @@ def run():
 
     ui = UserInterface()
     recursive_solver = RecursiveFibonacci()
+    iterative_solver = IterativeFibonacci()
 
     running: bool = True
     while running:
@@ -27,14 +29,26 @@ def run():
                 ui.press_any_key_to_continue()
 
             case 1:
-                # run original fibonacci algorithm
-                number_of_elements = ui.get_number_of_elements()
-                print(recursive_solver.solver(int(number_of_elements)))
+                # run recursive fibonacci algorithm
+                number_of_elements: int = int(ui.get_number_of_elements())
+                recursive_solver.sequence_maker(number_of_elements)
+                ui.print_sequence(recursive_solver)
+                ui.press_any_key_to_continue()
 
             case 2:
-                # run modified fibonacci algorithm
-                ...
+                # run iterative fibonacci algorithm
+                number_of_elements: int = int(ui.get_number_of_elements())
+                iterative_solver.sequence_maker(number_of_elements)
+                ui.print_sequence(iterative_solver)
+                ui.press_any_key_to_continue()
 
             case 3:
+                number_of_elements: int = int(ui.get_number_of_elements())
+                recursive_solver.sequence_maker(number_of_elements)
+                iterative_solver.sequence_maker(number_of_elements)
+                ui.print_sequence(recursive_solver, iterative_solver)
+                ui.press_any_key_to_continue()
+
+            case 4:
                 # exit
                 sys.exit()

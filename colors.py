@@ -67,3 +67,10 @@ def print_yellow(message):
     Style.YELLOW
     print(message)
     Style.RESET
+
+
+def print_magenta(message):
+    """method to print magenta"""
+    Style.MAGENTA
+    print(message)
+    Style.RESET
