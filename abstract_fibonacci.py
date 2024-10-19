@@ -20,6 +20,7 @@ class AbstractFibonacci(ABC):
         self.sequence: list = []
         self.timer: float = 0.00
         self.count: int = 0
+        self.lookup_table: dict = {}
 
     ################
     # Interfaces    #
@@ -43,6 +44,7 @@ class AbstractFibonacci(ABC):
         for number in range(1, 11):
             self.sequence_maker(number)
             cycle_dict[number] = self.count
+            self.lookup_table.clear()
         return cycle_dict
 
     #################

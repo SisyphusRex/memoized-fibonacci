@@ -1,0 +1,29 @@
+"""memoized recursive module"""
+
+# System Imports
+
+# First Party Imports
+from abstract_fibonacci import AbstractFibonacci
+
+# Third Party Imports
+
+
+class MemoizedRecursion(AbstractFibonacci):
+    """class containing memoized recursion"""
+
+    @property
+    def name(self):
+        return "MemoizedRecursion"
+
+    def _fibonacci_value_solver(self, n: int) -> int:
+        self.count += 1
+        if n in self.lookup_table:
+            return self.lookup_table[n]
+        if n in (0, 1):
+            self.lookup_table[n] = n
+            return n
+        value = self._fibonacci_value_solver(n - 2) + self._fibonacci_value_solver(
+            n - 1
+        )
+        self.lookup_table[n] = value
+        return value

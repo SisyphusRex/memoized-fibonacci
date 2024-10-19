@@ -3,7 +3,7 @@
 # System Imports
 
 # First Party Imports
-from colors import print_blue, print_green, print_red, print_magenta
+from colors import print_blue, print_green, print_red, print_magenta, print_yellow
 
 # Third Party Imports
 
@@ -15,6 +15,8 @@ class UserInterface:
         "Explain Fibonacci",
         "Run Fibonacci Recursive",
         "Run Fibonacci Iterative",
+        "Run Memoized Recursive",
+        "Clear memoized cache",
         "Compare Recursive and Iterative",
         "Show n-Cycles Charts",
         "Exit",
@@ -71,6 +73,11 @@ class UserInterface:
         print_blue(f"{header[0]:>10}{header[1]:>10}")
         for key, value in input_dict.items():
             print(f"{key:>10}{value:>10}")
+
+    def print_cleared(self) -> None:
+        """print cache cleared"""
+        print_yellow("Cache cleared.")
+        print()
 
     ####################
     # Private Methods   #
