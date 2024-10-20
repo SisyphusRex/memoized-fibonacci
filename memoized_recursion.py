@@ -16,8 +16,12 @@ class MemoizedRecursion(AbstractFibonacci):
         return "MemoizedRecursion"
 
     def _fibonacci_value_solver(self, n: int) -> int:
-        self.count += 1
+
         if n in self.lookup_table:
+            # we must increase our count by the length of the look up table, since
+            # the number of process to compare n to lookup_table grows in
+            # relation to n
+            self.count += len(self.lookup_table)
             return self.lookup_table[n]
         if n in (0, 1):
             self.lookup_table[n] = n
@@ -26,4 +30,5 @@ class MemoizedRecursion(AbstractFibonacci):
             n - 1
         )
         self.lookup_table[n] = value
+        self.count += 1
         return value
