@@ -4,11 +4,11 @@
 import sys
 
 # First Party Imports
-from recursive_fibonacci import RecursiveFibonacci
-from iterative_fibonacci import IterativeFibonacci
+from solver_modules.recursive_fibonacci import RecursiveFibonacci
+from solver_modules.iterative_fibonacci import IterativeFibonacci
 from ui import UserInterface
-from memoized_recursion import MemoizedRecursion
-from optimized_cache import OptimizedCache
+from solver_modules.memoized_recursion import MemoizedRecursion
+from solver_modules.optimized_cache import OptimizedCache
 
 # Third Party Imorts
 

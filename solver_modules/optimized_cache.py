@@ -1,19 +1,19 @@
-"""memoized recursive module"""
+"""optimized cache memoized recursion module"""
 
 # System Imports
 
 # First Party Imports
-from abstract_fibonacci import AbstractFibonacci
+from solver_modules.abstract_fibonacci import AbstractFibonacci
 
 # Third Party Imports
 
 
-class MemoizedRecursion(AbstractFibonacci):
-    """class containing memoized recursion"""
+class OptimizedCache(AbstractFibonacci):
+    """Optimized Cache Memoized Recursion class"""
 
     @property
     def name(self):
-        return "MemoizedRecursion"
+        return "Optimized Cache"
 
     def _fibonacci_value_solver(self, n: int) -> int:
         if n in (0, 1):
@@ -21,9 +21,6 @@ class MemoizedRecursion(AbstractFibonacci):
             self.count += 1
             return n
         if n in self.lookup_table:
-            # we must increase our count by the length of the look up table, since
-            # the number of process to compare n to lookup_table grows in direct
-            # relation to n
             self.count += len(self.lookup_table)
             return self.lookup_table[n]
 
@@ -31,5 +28,8 @@ class MemoizedRecursion(AbstractFibonacci):
             n - 1
         )
         self.lookup_table[n] = value
+        # this optimizes our cache by getting rid of the key, value pair that is no longer needed each time we add a
+        # new key value
+        del self.lookup_table[n - 2]
         self.count += 1
         return value

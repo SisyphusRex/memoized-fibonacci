@@ -3,7 +3,7 @@
 # System Imports
 
 # First Party Imports
-from abstract_fibonacci import AbstractFibonacci
+from solver_modules.abstract_fibonacci import AbstractFibonacci
 
 # Third Party Imports
 

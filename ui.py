@@ -61,7 +61,7 @@ class UserInterface:
         print_magenta(args[0].sequence)
         header: list[str] = ["Name", "Cycles", "Runtime"]
         # TODO: I cannot figure out why the header does not match up with the string in the abstract __str__ call
-        print_blue(f"{header[0]:<15}{header[1]:>15}{header[2]:>15}")
+        print_blue(f"{header[0]:<20}{header[1]:>15}{header[2]:>15}")
         # f"{self._name:<15}{self.__format_count(self.count):>20}{self.__format_time(self.timer):>15}"
         for index, value in enumerate(args):
             print(value)

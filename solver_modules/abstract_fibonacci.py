@@ -53,7 +53,7 @@ class AbstractFibonacci(ABC):
     def __str__(self):
         """str method"""
         # TODO: I cannot figure out why this string does not match up with the header in the ui.a
-        return f"{self.name:<15}{self.__format_count(self.count):>15}{self.__format_time(self.timer):>15}"
+        return f"{self.name:<20}{self.__format_count(self.count):>15}{self.__format_time(self.timer):>15}"
 
     def sequence_maker(self, number_of_elements: int) -> list[int]:
         """method to create fibonacci sequence"""
