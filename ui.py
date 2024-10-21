@@ -16,8 +16,9 @@ class UserInterface:
         "Run Fibonacci Recursive",
         "Run Fibonacci Iterative",
         "Run Memoized Recursive",
+        "Run Optimized Cache Memoized Recursive",
         "Clear memoized cache",
-        "Compare Recursive and Iterative",
+        "Compare Sequences",
         "Show n-Cycles Charts",
         "Exit",
     ]

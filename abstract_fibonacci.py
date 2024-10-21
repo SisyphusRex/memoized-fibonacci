@@ -20,7 +20,7 @@ class AbstractFibonacci(ABC):
         self.sequence: list = []
         self.timer: float = 0.00
         self.count: int = 0
-        self.lookup_table: dict = {}
+        self.lookup_table: dict = {}  # AKA cache
 
     ################
     # Interfaces    #

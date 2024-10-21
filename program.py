@@ -8,6 +8,7 @@ from recursive_fibonacci import RecursiveFibonacci
 from iterative_fibonacci import IterativeFibonacci
 from ui import UserInterface
 from memoized_recursion import MemoizedRecursion
+from optimized_cache import OptimizedCache
 
 # Third Party Imorts
 
@@ -19,6 +20,7 @@ def run():
     recursive_solver = RecursiveFibonacci()
     iterative_solver = IterativeFibonacci()
     memoized_solver = MemoizedRecursion()
+    optimized_cache_solver = OptimizedCache()
 
     running: bool = True
     while running:
@@ -51,25 +53,40 @@ def run():
                 ui.print_sequence(memoized_solver)
 
             case 4:
+                # run optimized cache memoized recursive algorithm
+                number_of_elements: int = int(ui.get_number_of_elements())
+                optimized_cache_solver.sequence_maker(number_of_elements)
+                ui.print_sequence(optimized_cache_solver)
+
+            case 5:
                 # clear memoization cache
                 memoized_solver.lookup_table.clear()
                 ui.print_cleared()
 
-            case 5:
+            case 6:
                 # compare algorithms
                 number_of_elements: int = int(ui.get_number_of_elements())
                 recursive_solver.sequence_maker(number_of_elements)
                 iterative_solver.sequence_maker(number_of_elements)
                 memoized_solver.sequence_maker(number_of_elements)
-                ui.print_sequence(recursive_solver, iterative_solver, memoized_solver)
+                optimized_cache_solver.sequence_maker(number_of_elements)
+                ui.print_sequence(
+                    recursive_solver,
+                    iterative_solver,
+                    memoized_solver,
+                    optimized_cache_solver,
+                )
                 ui.press_enter_to_continue()
 
-            case 6:
+            case 7:
                 # compare cycle dicts
                 ui.print_dict(recursive_solver.name, recursive_solver.n_cycle_dict)
                 ui.print_dict(iterative_solver.name, iterative_solver.n_cycle_dict)
                 ui.print_dict(memoized_solver.name, memoized_solver.n_cycle_dict)
+                ui.print_dict(
+                    optimized_cache_solver.name, optimized_cache_solver.n_cycle_dict
+                )
 
-            case 7:
+            case 8:
                 # exit
                 sys.exit()
