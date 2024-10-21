@@ -61,6 +61,7 @@ def run():
             case 5:
                 # clear memoization cache
                 memoized_solver.lookup_table.clear()
+                optimized_cache_solver.lookup_table.clear()
                 ui.print_cleared()
 
             case 6:
