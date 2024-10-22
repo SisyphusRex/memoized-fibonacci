@@ -23,9 +23,9 @@ class UserInterface:
         "Create Sequence with Recursion",
         "Create Sequence with Memoized Recursion",
         "Create Sequence with Optimized Cache Memoized Recursion",
+        "Compare Sequence using Each Algorithm",
         "Clear Cache",
-        "Compare Sequences by Algorithm",
-        "Show n/cycle Charts",
+        "Show n/cycle Charts\n      (n=number of elements in sequence)",
         "Exit to Main Menu",
     ]
 
@@ -34,9 +34,9 @@ class UserInterface:
         "Find Index Value using Recursion",
         "Find Index Value using Memoized Recursion",
         "Find Index Value using Optomized Cache Memoized Recursion",
+        "Find Value using Each Algorithm",
         "Clear Cache",
-        "Compare Values by Algorithm",
-        "Show n/cycle Charts",
+        "Show n/cycle Charts\n        (n=index in sequence)",
         "Exit to Main Menu",
     ]
 
@@ -94,6 +94,17 @@ class UserInterface:
     def print_sequence(self, *args) -> None:
         """method to print fibonacci sequence and stats"""
         print_magenta(args[0].sequence)
+        header: list[str] = ["Name", "Cycles", "Runtime"]
+        # TODO: I cannot figure out why the header does not match up with the string in the abstract __str__ call
+        print_blue(f"{header[0]:<20}{header[1]:>15}{header[2]:>15}")
+        # f"{self._name:<15}{self.__format_count(self.count):>20}{self.__format_time(self.timer):>15}"
+        for index, value in enumerate(args):
+            print(value)
+        print()
+
+    def print_value(self, *args) -> None:
+        """method to print value at index and stats"""
+        print_magenta(args[0].value)
         header: list[str] = ["Name", "Cycles", "Runtime"]
         # TODO: I cannot figure out why the header does not match up with the string in the abstract __str__ call
         print_blue(f"{header[0]:<20}{header[1]:>15}{header[2]:>15}")

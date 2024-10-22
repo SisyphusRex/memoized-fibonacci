@@ -74,12 +74,14 @@ class ProgramWrapper:
         number_of_elements: int = int(self.__ui.get_number_of_elements())
         self.__memoized_solver.sequence_maker(number_of_elements)
         self.__ui.print_sequence(self.__memoized_solver)
+        self.__ui.press_enter_to_continue()
 
     def create_optimized_cache_sequence(self) -> None:
         """menu method to create sequence with optimized cache"""
         number_of_elements: int = int(self.__ui.get_number_of_elements())
         self.__optimized_cache_solver.sequence_maker(number_of_elements)
         self.__ui.print_sequence(self.__optimized_cache_solver)
+        self.__ui.press_enter_to_continue()
 
     def clear_cache(self) -> None:
         """menu method to clear cache of memoized and optimized"""
@@ -95,8 +97,8 @@ class ProgramWrapper:
         self.__memoized_solver.sequence_maker(number_of_elements)
         self.__optimized_cache_solver.sequence_maker(number_of_elements)
         self.__ui.print_sequence(
-            self.__recursive_solver,
             self.__iterative_solver,
+            self.__recursive_solver,
             self.__memoized_solver,
             self.__optimized_cache_solver,
         )
@@ -118,28 +120,68 @@ class ProgramWrapper:
             self.__optimized_cache_solver.name,
             self.__optimized_cache_solver.sequence_n_cycle_dict,
         )
+        self.__ui.press_enter_to_continue()
 
     #############################
     # Value Finder Menu Methods #
     #############################
-    def find_value_with_iteration(self):
+    def find_value_with_iteration(self) -> None:
         """menu method to find value at index with iteration"""
-        index = self.__ui.get_index_of_sequence()
-        ...
+        index: int = int(self.__ui.get_index_of_sequence())
+        self.__iterative_solver.value_finder(index)
+        self.__ui.print_value(self.__iterative_solver)
+        self.__ui.press_enter_to_continue()
+
+    def find_value_with_recursion(self) -> None:
+        """menu method to find value at index with recursion"""
+        index: int = int(self.__ui.get_index_of_sequence())
+        self.__recursive_solver.value_finder(index)
+        self.__ui.print_value(self.__recursive_solver)
+        self.__ui.press_enter_to_continue()
+
+    def find_value_with_memoized_recursion(self) -> None:
+        """menu method to find value at index with memoized recursion"""
+        index: int = int(self.__ui.get_index_of_sequence())
+        self.__memoized_solver.value_finder(index)
+        self.__ui.print_value(self.__memoized_solver)
+        self.__ui.press_enter_to_continue()
+
+    def find_value_with_optimized_cache(self) -> None:
+        """menu method to find value at index with optimized cache"""
+        index: int = int(self.__ui.get_index_of_sequence())
+        self.__optimized_cache_solver.value_finder(index)
+        self.__ui.print_value(self.__optimized_cache_solver)
+        self.__ui.press_enter_to_continue()
 
     def compare_value_n_cycle_dicts(self) -> None:
         """menu method to compare value n/cyle dicts"""
         self.__ui.print_dict(
-            self.__iterative_solver.name, self.__iterative_solver.sequence_n_cycle_dict
+            self.__iterative_solver.name, self.__iterative_solver.value_n_cycle_dict
         )
         self.__ui.print_dict(
-            self.__recursive_solver.name, self.__recursive_solver.sequence_n_cycle_dict
+            self.__recursive_solver.name, self.__recursive_solver.value_n_cycle_dict
         )
 
         self.__ui.print_dict(
-            self.__memoized_solver.name, self.__memoized_solver.sequence_n_cycle_dict
+            self.__memoized_solver.name, self.__memoized_solver.value_n_cycle_dict
         )
         self.__ui.print_dict(
             self.__optimized_cache_solver.name,
-            self.__optimized_cache_solver.sequence_n_cycle_dict,
+            self.__optimized_cache_solver.value_n_cycle_dict,
         )
+        self.__ui.press_enter_to_continue()
+
+    def compare_value_by_algorithm(self) -> None:
+        """method to compare algorithms in finding one value"""
+        index: int = int(self.__ui.get_index_of_sequence())
+        self.__recursive_solver.value_finder(index)
+        self.__iterative_solver.value_finder(index)
+        self.__memoized_solver.value_finder(index)
+        self.__optimized_cache_solver.value_finder(index)
+        self.__ui.print_value(
+            self.__iterative_solver,
+            self.__recursive_solver,
+            self.__memoized_solver,
+            self.__optimized_cache_solver,
+        )
+        self.__ui.press_enter_to_continue()

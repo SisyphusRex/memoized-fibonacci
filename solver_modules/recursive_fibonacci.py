@@ -13,7 +13,7 @@ class RecursiveFibonacci(AbstractFibonacci):
 
     @property
     def name(self):
-        return "Recursive"
+        return "Recursion"
 
     def _child_value_solver(self, n: int) -> int:
         self.count += 1

@@ -13,7 +13,7 @@ class IterativeFibonacci(AbstractFibonacci):
 
     @property
     def name(self):
-        return "Iterative"
+        return "Iteration"
 
     def _child_value_solver(self, n: int) -> int:
         if n == 0:

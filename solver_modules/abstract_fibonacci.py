@@ -46,6 +46,7 @@ class AbstractFibonacci(ABC):
             self.value_finder(number)
             cycle_dict[number] = self.count
             self.count = 0
+            self.lookup_table.clear()
         return cycle_dict
 
     @property

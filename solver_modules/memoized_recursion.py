@@ -13,7 +13,7 @@ class MemoizedRecursion(AbstractFibonacci):
 
     @property
     def name(self):
-        return "MemoizedRecursion"
+        return "Memoized Recursion"
 
     def _child_value_solver(self, n: int) -> int:
         if n in (0, 1):

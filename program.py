@@ -40,14 +40,14 @@ def run():
                             # create sequence with optimized cache
                             program.create_optimized_cache_sequence()
                         case 4:
-                            # clear memoized caches
-                            program.clear_cache()
-                        case 5:
                             # compare sequences by algorithm
                             program.compare_sequences_by_algorithm()
+                        case 5:
+                            # clear memoized caches
+                            program.clear_cache()
                         case 6:
                             # compare n/cycle dicts
-                            program.compare_n_cycle_dicts()
+                            program.compare_sequence_n_cycle_dicts()
                         case 7:
                             # exit to main menu
                             break
@@ -60,25 +60,25 @@ def run():
                     match int(value_finder_menu_choice):
                         case 0:
                             # find value using iteration
-                            ...
+                            program.find_value_with_iteration()
                         case 1:
                             # find value using recursion
-                            ...
+                            program.find_value_with_recursion()
                         case 2:
                             # find value using memoized recursion
-                            ...
+                            program.find_value_with_memoized_recursion()
                         case 3:
                             # find value using optimized cache
-                            ...
+                            program.find_value_with_optimized_cache()
                         case 4:
+                            # compare values by algorithm
+                            program.compare_value_by_algorithm()
+                        case 5:
                             # clear memoized caches
                             program.clear_cache()
-                        case 5:
-                            # compare values by algorithm
-                            ...
                         case 6:
                             # compare n/cycle dicts
-                            ...
+                            program.compare_value_n_cycle_dicts()
                         case 7:
                             # exit to main menu
                             break

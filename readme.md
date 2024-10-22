@@ -7,8 +7,8 @@ The program can display the run time and the approximate worst case amount of pr
 So far, I have calculated sequence_creator:
     Iteration: O(n^2)
         One for loop iterating over n, done n times
-    Recursion: O(2^n)
-        sequence of cycles is bounded by this function
+    Recursion: O(n2^n)
+        performing recursive value finder n times
     Memoized Recursion: O(n^2)
         basically iterating over an n length cache, n times
     Optimized Cache Memoized Recursion: **Projected** O(n)
