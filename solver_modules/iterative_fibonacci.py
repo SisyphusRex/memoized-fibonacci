@@ -15,7 +15,7 @@ class IterativeFibonacci(AbstractFibonacci):
     def name(self):
         return "Iterative"
 
-    def _fibonacci_value_solver(self, n: int) -> int:
+    def _child_value_solver(self, n: int) -> int:
         if n == 0:
             self.count += 1
             return 0

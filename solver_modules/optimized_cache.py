@@ -15,7 +15,7 @@ class OptimizedCache(AbstractFibonacci):
     def name(self):
         return "Optimized Cache"
 
-    def _fibonacci_value_solver(self, n: int) -> int:
+    def _child_value_solver(self, n: int) -> int:
         if n in (0, 1):
             self.lookup_table[n] = n
             self.count += 1
@@ -24,9 +24,7 @@ class OptimizedCache(AbstractFibonacci):
             self.count += len(self.lookup_table)
             return self.lookup_table[n]
 
-        value = self._fibonacci_value_solver(n - 2) + self._fibonacci_value_solver(
-            n - 1
-        )
+        value = self._child_value_solver(n - 2) + self._child_value_solver(n - 1)
         self.lookup_table[n] = value
         # this optimizes our cache by getting rid of the key, value pair that is no longer needed each time we add a
         # new key value

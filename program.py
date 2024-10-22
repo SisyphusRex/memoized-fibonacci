@@ -4,90 +4,84 @@
 import sys
 
 # First Party Imports
-from solver_modules.recursive_fibonacci import RecursiveFibonacci
-from solver_modules.iterative_fibonacci import IterativeFibonacci
-from ui import UserInterface
-from solver_modules.memoized_recursion import MemoizedRecursion
-from solver_modules.optimized_cache import OptimizedCache
+from program_wrapper import ProgramWrapper
+
 
 # Third Party Imorts
 
 
 def run():
     """method to run program"""
+    program = ProgramWrapper()
 
-    ui = UserInterface()
-    recursive_solver = RecursiveFibonacci()
-    iterative_solver = IterativeFibonacci()
-    memoized_solver = MemoizedRecursion()
-    optimized_cache_solver = OptimizedCache()
-
-    running: bool = True
-    while running:
-        choice = ui.display_main_menu()
-        match int(choice):
+    while True:
+        main_menu_choice: str = program.get_main_menu_choice()
+        match int(main_menu_choice):
             # handles main menu functionality based on user input
             case 0:
                 # talk about fibonacci sequence
-                ui.explain_fibonacci()
-                ui.press_enter_to_continue()
+                program.explain_fibonacci()
 
             case 1:
-                # run recursive fibonacci algorithm
-                number_of_elements: int = int(ui.get_number_of_elements())
-                recursive_solver.sequence_maker(number_of_elements)
-                ui.print_sequence(recursive_solver)
-                ui.press_enter_to_continue()
-
+                # Sequence Maker menu
+                while True:
+                    sequence_menu_choice: str = program.get_sequence_menu_choice()
+                    match int(sequence_menu_choice):
+                        case 0:
+                            # create sequence with iteration
+                            program.create_iterative_sequence()
+                        case 1:
+                            # create sequence with recursion
+                            program.create_recursive_sequence()
+                        case 2:
+                            # create sequence with memoized recursion
+                            program.create_memoized_sequence()
+                        case 3:
+                            # create sequence with optimized cache
+                            program.create_optimized_cache_sequence()
+                        case 4:
+                            # clear memoized caches
+                            program.clear_cache()
+                        case 5:
+                            # compare sequences by algorithm
+                            program.compare_sequences_by_algorithm()
+                        case 6:
+                            # compare n/cycle dicts
+                            program.compare_n_cycle_dicts()
+                        case 7:
+                            # exit to main menu
+                            break
             case 2:
-                # run iterative fibonacci algorithm
-                number_of_elements: int = int(ui.get_number_of_elements())
-                iterative_solver.sequence_maker(number_of_elements)
-                ui.print_sequence(iterative_solver)
-                ui.press_enter_to_continue()
-
+                # Value solver menu
+                while True:
+                    value_finder_menu_choice: str = (
+                        program.get_value_finder_menu_choice()
+                    )
+                    match int(value_finder_menu_choice):
+                        case 0:
+                            # find value using iteration
+                            ...
+                        case 1:
+                            # find value using recursion
+                            ...
+                        case 2:
+                            # find value using memoized recursion
+                            ...
+                        case 3:
+                            # find value using optimized cache
+                            ...
+                        case 4:
+                            # clear memoized caches
+                            program.clear_cache()
+                        case 5:
+                            # compare values by algorithm
+                            ...
+                        case 6:
+                            # compare n/cycle dicts
+                            ...
+                        case 7:
+                            # exit to main menu
+                            break
             case 3:
-                # run memoized recursive algorithm
-                number_of_elements: int = int(ui.get_number_of_elements())
-                memoized_solver.sequence_maker(number_of_elements)
-                ui.print_sequence(memoized_solver)
-
-            case 4:
-                # run optimized cache memoized recursive algorithm
-                number_of_elements: int = int(ui.get_number_of_elements())
-                optimized_cache_solver.sequence_maker(number_of_elements)
-                ui.print_sequence(optimized_cache_solver)
-
-            case 5:
-                # clear memoization cache
-                memoized_solver.lookup_table.clear()
-                optimized_cache_solver.lookup_table.clear()
-                ui.print_cleared()
-
-            case 6:
-                # compare algorithms
-                number_of_elements: int = int(ui.get_number_of_elements())
-                recursive_solver.sequence_maker(number_of_elements)
-                iterative_solver.sequence_maker(number_of_elements)
-                memoized_solver.sequence_maker(number_of_elements)
-                optimized_cache_solver.sequence_maker(number_of_elements)
-                ui.print_sequence(
-                    recursive_solver,
-                    iterative_solver,
-                    memoized_solver,
-                    optimized_cache_solver,
-                )
-                ui.press_enter_to_continue()
-
-            case 7:
-                # compare cycle dicts
-                ui.print_dict(recursive_solver.name, recursive_solver.n_cycle_dict)
-                ui.print_dict(iterative_solver.name, iterative_solver.n_cycle_dict)
-                ui.print_dict(memoized_solver.name, memoized_solver.n_cycle_dict)
-                ui.print_dict(
-                    optimized_cache_solver.name, optimized_cache_solver.n_cycle_dict
-                )
-
-            case 8:
                 # exit
                 sys.exit()

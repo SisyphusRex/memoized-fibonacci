@@ -15,8 +15,8 @@ class RecursiveFibonacci(AbstractFibonacci):
     def name(self):
         return "Recursive"
 
-    def _fibonacci_value_solver(self, n: int) -> int:
+    def _child_value_solver(self, n: int) -> int:
         self.count += 1
         if n in (0, 1):
             return n
-        return self._fibonacci_value_solver(n - 2) + self._fibonacci_value_solver(n - 1)
+        return self._child_value_solver(n - 2) + self._child_value_solver(n - 1)

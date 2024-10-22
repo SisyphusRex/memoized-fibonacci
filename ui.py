@@ -13,19 +13,49 @@ class UserInterface:
 
     MAIN_MENU: list[str] = [
         "Explain Fibonacci",
-        "Run Fibonacci Recursive",
-        "Run Fibonacci Iterative",
-        "Run Memoized Recursive",
-        "Run Optimized Cache Memoized Recursive",
-        "Clear caches",
-        "Compare Sequences",
-        "Show n-Cycles Charts",
+        "Create Sequences",
+        "Find Values",
         "Exit",
+    ]
+
+    SEQUENCE_MENU: list[str] = [
+        "Create Sequence with Iteration",
+        "Create Sequence with Recursion",
+        "Create Sequence with Memoized Recursion",
+        "Create Sequence with Optimized Cache Memoized Recursion",
+        "Clear Cache",
+        "Compare Sequences by Algorithm",
+        "Show n/cycle Charts",
+        "Exit to Main Menu",
+    ]
+
+    VALUE_FINDER_MENU: list[str] = [
+        "Find Index Value using Iteration",
+        "Find Index Value using Recursion",
+        "Find Index Value using Memoized Recursion",
+        "Find Index Value using Optomized Cache Memoized Recursion",
+        "Clear Cache",
+        "Compare Values by Algorithm",
+        "Show n/cycle Charts",
+        "Exit to Main Menu",
     ]
 
     #########################
     # Public Methods         #
     #########################
+
+    def display_value_finder_menu(self) -> str:
+        """method to display value solver menu and return choice"""
+        user_input: str = self.__while_waiting_for_good_menu_input(
+            self.VALUE_FINDER_MENU
+        )
+        return user_input
+
+    def display_sequence_menu(self) -> str:
+        """method to display sequence menu and return choice"""
+        user_input: str = self.__while_waiting_for_good_menu_input(self.SEQUENCE_MENU)
+        return user_input
+
     def display_main_menu(self) -> str:
         """method to display menu, get input, and return selection"""
         user_input: str = self.__while_waiting_for_good_menu_input(self.MAIN_MENU)
@@ -42,6 +72,11 @@ class UserInterface:
             "For this program, we will always start the sequence at 0."
         )
         print()
+
+    def get_index_of_sequence(self) -> str:
+        """method to get index of fibonacci sequence"""
+        user_input: str = self.__while_waiting_for_good_index_input()
+        return user_input
 
     def get_number_of_elements(self) -> str:
         """method to get number of elements for fibonacci sequence"""
@@ -92,6 +127,20 @@ class UserInterface:
     def __get_number_of_elements_base(self) -> None:
         """method to display get elements message"""
         print_green("How many Fibonacci elements do you want to display?")
+
+    def __get_index_of_sequence_base(self) -> None:
+        """method to display get index message"""
+        print_green("What index of the Fibonacci sequence do you want the value of?")
+
+    def __while_waiting_for_good_index_input(self) -> str:
+        """method to repeat message and input until good"""
+        good_input: bool = False
+        while not good_input:
+            self.__get_index_of_sequence_base()
+            user_input = input(">")
+            print()
+            good_input = self.__is_positive_integer(user_input)
+        return user_input
 
     def __while_waiting_for_good_elements_input(self) -> str:
         """method to repeat message and input until good"""
