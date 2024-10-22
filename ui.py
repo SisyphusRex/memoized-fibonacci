@@ -25,7 +25,7 @@ class UserInterface:
         "Create Sequence with Optimized Cache Memoized Recursion",
         "Compare Sequence using Each Algorithm",
         "Clear Cache",
-        "Show n/cycle Charts\n      (n=number of elements in sequence)",
+        "Show n/cycle Charts\n      (n= number of elements in sequence)",
         "Exit to Main Menu",
     ]
 
@@ -36,7 +36,7 @@ class UserInterface:
         "Find Index Value using Optomized Cache Memoized Recursion",
         "Find Value using Each Algorithm",
         "Clear Cache",
-        "Show n/cycle Charts\n        (n=index in sequence)",
+        "Show n/cycle Charts\n        (n= nth number in sequence)",
         "Exit to Main Menu",
     ]
 
@@ -76,7 +76,9 @@ class UserInterface:
     def get_index_of_sequence(self) -> str:
         """method to get index of fibonacci sequence"""
         user_input: str = self.__while_waiting_for_good_index_input()
-        return user_input
+        # we must subtract 1 to make the user input an index and then recast it to string for uniformity
+        user_input = int(user_input) - 1
+        return str(user_input)
 
     def get_number_of_elements(self) -> str:
         """method to get number of elements for fibonacci sequence"""
@@ -141,7 +143,9 @@ class UserInterface:
 
     def __get_index_of_sequence_base(self) -> None:
         """method to display get index message"""
-        print_green("What index of the Fibonacci sequence do you want the value of?")
+        print_green(
+            "Which number of the Fibonacci sequence do you want the value of?\n(number = nth number in sequence\n1 for first, 2 for second, etc.)"
+        )
 
     def __while_waiting_for_good_index_input(self) -> str:
         """method to repeat message and input until good"""

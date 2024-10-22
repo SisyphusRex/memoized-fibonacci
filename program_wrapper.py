@@ -127,28 +127,28 @@ class ProgramWrapper:
     #############################
     def find_value_with_iteration(self) -> None:
         """menu method to find value at index with iteration"""
-        index: int = int(self.__ui.get_index_of_sequence())
+        index: int = int(self.__ui.get_index_of_sequence()) - 1
         self.__iterative_solver.value_finder(index)
         self.__ui.print_value(self.__iterative_solver)
         self.__ui.press_enter_to_continue()
 
     def find_value_with_recursion(self) -> None:
         """menu method to find value at index with recursion"""
-        index: int = int(self.__ui.get_index_of_sequence())
+        index: int = int(self.__ui.get_index_of_sequence()) - 1
         self.__recursive_solver.value_finder(index)
         self.__ui.print_value(self.__recursive_solver)
         self.__ui.press_enter_to_continue()
 
     def find_value_with_memoized_recursion(self) -> None:
         """menu method to find value at index with memoized recursion"""
-        index: int = int(self.__ui.get_index_of_sequence())
+        index: int = int(self.__ui.get_index_of_sequence()) - 1
         self.__memoized_solver.value_finder(index)
         self.__ui.print_value(self.__memoized_solver)
         self.__ui.press_enter_to_continue()
 
     def find_value_with_optimized_cache(self) -> None:
         """menu method to find value at index with optimized cache"""
-        index: int = int(self.__ui.get_index_of_sequence())
+        index: int = int(self.__ui.get_index_of_sequence()) - 1
         self.__optimized_cache_solver.value_finder(index)
         self.__ui.print_value(self.__optimized_cache_solver)
         self.__ui.press_enter_to_continue()
@@ -173,7 +173,7 @@ class ProgramWrapper:
 
     def compare_value_by_algorithm(self) -> None:
         """method to compare algorithms in finding one value"""
-        index: int = int(self.__ui.get_index_of_sequence())
+        index: int = int(self.__ui.get_index_of_sequence()) - 1
         self.__recursive_solver.value_finder(index)
         self.__iterative_solver.value_finder(index)
         self.__memoized_solver.value_finder(index)
