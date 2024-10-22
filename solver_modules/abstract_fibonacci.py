@@ -42,9 +42,9 @@ class AbstractFibonacci(ABC):
     def value_n_cycle_dict(self) -> dict[int, int]:
         """method to get valu n/cycle dict"""
         cycle_dict: dict[int, int] = {}
-        for number in range(1, 11):
-            self.value_finder(number)
-            cycle_dict[number] = self.count
+        for index in range(10):
+            self.value_finder(index)
+            cycle_dict[index + 1] = self.count
             self.count = 0
             self.lookup_table.clear()
         return cycle_dict
@@ -53,9 +53,9 @@ class AbstractFibonacci(ABC):
     def sequence_n_cycle_dict(self) -> dict[int, int]:
         """method to get sequence n cycle dict"""
         cycle_dict: dict[int, int] = {}
-        for number in range(1, 11):
-            self.sequence_maker(number)
-            cycle_dict[number] = self.count
+        for number_of_elements in range(1, 11):
+            self.sequence_maker(number_of_elements)
+            cycle_dict[number_of_elements] = self.count
             self.lookup_table.clear()
         return cycle_dict
 
