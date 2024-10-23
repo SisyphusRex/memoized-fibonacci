@@ -21,7 +21,7 @@ class OptimizedCache(AbstractFibonacci):
             self.count += 1
             return n
         if n in self.lookup_table:
-            self.count += len(self.lookup_table)
+            self.count += 1
             return self.lookup_table[n]
 
         value = self._child_value_solver(n - 2) + self._child_value_solver(n - 1)

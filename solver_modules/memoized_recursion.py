@@ -21,10 +21,8 @@ class MemoizedRecursion(AbstractFibonacci):
             self.count += 1
             return n
         if n in self.lookup_table:
-            # we must increase our count by the length of the look up table, since
-            # the number of process to compare n to lookup_table grows in direct
-            # relation to n
-            self.count += len(self.lookup_table)
+            # in python, checking for "x in y" when y is a dict is O(1)
+            self.count += 1
             return self.lookup_table[n]
 
         value = self._child_value_solver(n - 2) + self._child_value_solver(n - 1)

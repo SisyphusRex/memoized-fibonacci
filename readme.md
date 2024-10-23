@@ -1,32 +1,68 @@
-This program produces Fibonacci sequences through different methods and displays the statistics used to evaluate bigO notation.
+This program measures the efficiency of algorithms used to create a Fibonacci Sequence.  It tests the effiency of finding nth value or producing a sequence of n length.
 
-The program can produce a Fibonacci sequence through iteration, recursion, memoized recursion, and **PLANNED** optimized cache memoized recursion.
+The Fibonacci sequence is a sequence of numbers in which each number is the sum of the two preceding numbers.
+            F₀ = 0, F₁ = 1 (initial cases)
+            Fₙ = Fₙ₋₁ + Fₙ₋₂
+            Which produces
+            0 1 1 2 3 5 8 13 ...
 
-The program can display the run time and the approximate worst case amount of processes a function takes to produce a Fibonacci sequence.
+The algorithms used are:
+            Iteration
+            Recursion
+            Memoized Recursion
+            Optimized Cache Memoized Recursion
 
-So far, I have calculated sequence_creator:
-    Iteration: O(n^2)
-        One for loop iterating over n, done n times
-    Recursion: O(n2^n)
-        performing recursive value finder n times
-    Memoized Recursion: O(n^2)
-        basically iterating over an n length cache, n times
-    Optimized Cache Memoized Recursion: **Projected** O(n)
+The program has two main branches.  One branch is the value finder algorithms.  These algorithms return the value of the nth term in the Fibonacci Sequence.  The second branch is the sequence creator algorithms.  These algorithms return a sequence of n terms and are based upon the value finder algorithms.
 
- Since I am calculating the bigO of creating a Fibonacci sequence and not just finding the value of nth term, one
-can determine the bigO of each value finding method by dividing the previous bigOs by n (since each value finder must be
-repeated n times to create a sequence) EXCEPT for Optimized Cache Memoized Recursion.
+I began this project in an effort to improve upon a Fibonacci recursive algorithm.  I thought recursion to be very inefficient because it continually calculates values that were previously calculated.  I thought that there has to be a way to store previous solutions and to reference these solutions rather than repeat an entire recursive call tree.
 
-value_finder bigO:
-    Iteration: O(n)
-    Recursion: O(2^n)
-    Memoized Recursion: O(n)
-    Optimized Cache Memoized Recursion: STILL O(n)
+I eventually arrived at what I now know as Memoization.  Memoization is an optimization technique in which the results of function calls are stored for use in future function calls.  In practice, it requires comparing the argument of a function to a lookup table, or cache, of previously calculated arguments and their values.  If the argument has already been solved, you return the value from the lookup table rather than calculating it from scratch using the function.
 
-Optimized Cache Memoized Recursion stays the same because I plan to modify the look-up table, or cache, within the value finder
-to only holding the two previous n values rather than the entire fibonacci sequence cache.  To find a value at n, I only need
-to know n-2 and n-1.  I know my sequence_creator function is going from least to greatest.  Thus, rather than iterating
-over the entire sequence cache (which at worst is length n), I just have to iterate over a cache of constant length 2!  While this
-decreases the sequence_creator bigO to linear (because we no longer have to iterate over n n times, but 2 n times), we still have to
-create the cache about n times to find a single value if not part of a larger sequence.  NOTE: This is similar to creating a linked-list
-that moves the head and tail each time.
+While writing my algorithms, I encountered what I thought was a problem with Memoized Recursion.  I use a Python dictionary as the cache and I assumed the worst case efficiency of comparing a value to the dictionary, "if x in y", was O(n) because I thought the function had to iterate over all members of the dictionary to confirm a match.  Upon further research, I discovered that Python's dictionary is essentially a hashmap and uses no iteration.  The average, bigϴ, lookup is ϴ(1).  The Amortized Worst Case is O(n).
+**NOTE** I need to research hashing and hashmaps further to give an accurate bigO of my Memoized Recursion algorithms.
+
+Before I discovered the hashmap nature of Python dicts, I created the Optimized Cache Memoized Recursion algorithm.  Since Fibonacci requires only two numbers to calculate the next in the sequence, I made the cache delete the rear number before adding one to the front.  The size of the cache is static so it is not affected by n.  Regardless of what the bigO of dict lookup really is, this algorithm's worst case efficiency will not change.
+
+
+
+Calculated BigO (10/23/24):
+    Value Finder Algorithms:
+        Iteration:
+            O(n)
+                The algorithm moves through n once
+        Recursion:
+            O(2^n)
+                The algorithm doubles its calls with every increase of n
+        Memoized Recursion:
+            **Not Final**
+            O(n): Assumes that dict lookup ϴ(1)
+            O(n^2): Assumes dict lookup O(n)
+        Optimized Cache Memoized Recursion:
+            O(n)
+                Regardless of dict lookup ϴ(1) or O(n) since cache size is constant
+    Sequence Creator Algorithms:
+        Iteration:
+            O(n^2)
+                The algorithm finds the value, O(n), n times.
+            **Note** This should be improved by modifying the return of the Iterative Value Finder algorithm.  Currently, it creates the entire sequence and then returns the value of the last index.  Why not return the sequence?
+            O(n): assumes modified Value Finder return
+        Recursion:
+            O(n2^n)
+            The algorithm mus calculate the value, O(2^n), n times
+        Memoized Recursion:
+            O(n): assumes dict lookup ϴ(1)
+                Each value finder call is O(1) performed n times
+                Since we are repeating the value finder call, we can reuse the cache from the first call and make each value finder call a dict lookup at O(1)
+            O(n^2): assume dict lookup O(n)
+                Again, we are reusing the cache
+        Optimized Cache Memoized Recursion:
+            O(n)
+                Regardless of dict lookup ϴ(1) or O(n) since cache is constant.
+
+
+
+
+
+
+
+
