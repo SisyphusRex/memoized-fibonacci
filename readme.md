@@ -7,10 +7,10 @@ The Fibonacci sequence is a sequence of numbers in which each number is the sum 
             0 1 1 2 3 5 8 13 ...
 
 The algorithms used are:
-            Iteration
-            Recursion
-            Memoized Recursion
-            Optimized Cache Memoized Recursion
+            Iteration  
+            Recursion  
+            Memoized Recursion  
+            Optimized Cache Memoized Recursion  
 
 The program has two main branches.  One branch is the value finder algorithms.  These algorithms return the value of the nth term in the Fibonacci Sequence.  The second branch is the sequence creator algorithms.  These algorithms return a sequence of n terms and are based upon the value finder algorithms.
 
