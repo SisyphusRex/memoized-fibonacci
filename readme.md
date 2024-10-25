@@ -26,7 +26,7 @@ Before I discovered the hashmap nature of Python dicts, I created the Optimized 
 
 
 Calculated BigO (10/23/24):  
-    Value Finder Algorithms:  
+*     Value Finder Algorithms:  
         Iteration:  
             O(n)  
                 The algorithm moves through n once  
