@@ -26,14 +26,14 @@ Before I discovered the hashmap nature of Python dicts, I created the Optimized 
 
 
 Calculated BigO (10/23/24):  
-    >Value Finder Algorithms:  
-        >>Iteration:  
-            >>>O(n)  
-                >>>>The algorithm moves through n once  
-        >>Recursion:  
-            >>>O(2^n)  
-                >>>>The algorithm doubles its calls with every increase of n  
-        >>Memoized Recursion:  
+    _Value Finder Algorithms:  
+        __Iteration:  
+            ___O(n)  
+                ____The algorithm moves through n once  
+        __Recursion:  
+            ___O(2^n)  
+                ____The algorithm doubles its calls with every increase of n  
+        __Memoized Recursion:  
             >>>**Not Final**  
             >>>O(n): Assumes that dict lookup ϴ(1)  
             >>>O(n^2): Assumes dict lookup O(n)  
