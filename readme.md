@@ -1,7 +1,7 @@
 This program measures the efficiency of algorithms used to create a Fibonacci Sequence.  It tests the effiency of finding nth value or producing a sequence of n length.
 
 The Fibonacci sequence is a sequence of numbers in which each number is the sum of the two preceding numbers.
-            F₀ = 0, F₁ = 1 (initial cases)
+            *F₀ = 0, F₁ = 1 (initial cases)
             Fₙ = Fₙ₋₁ + Fₙ₋₂
             Which produces
             0 1 1 2 3 5 8 13 ...
