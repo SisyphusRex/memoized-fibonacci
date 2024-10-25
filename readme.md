@@ -26,38 +26,38 @@ Before I discovered the hashmap nature of Python dicts, I created the Optimized 
 
 
 Calculated BigO (10/23/24):  
-    _Value Finder Algorithms:  
-        __Iteration:  
-            ___O(n)  
-                ____The algorithm moves through n once  
-        __Recursion:  
-            ___O(2^n)  
-                ____The algorithm doubles its calls with every increase of n  
-        __Memoized Recursion:  
-            >>>**Not Final**  
-            >>>O(n): Assumes that dict lookup ϴ(1)  
-            >>>O(n^2): Assumes dict lookup O(n)  
-        >>Optimized Cache Memoized Recursion:  
-            >>>O(n)  
-                >>>>Regardless of dict lookup ϴ(1) or O(n) since cache size is constant  
-    >Sequence Creator Algorithms:  
-        >>Iteration:  
-            >>>O(n^2)  
-                >>>>The algorithm finds the value, O(n), n times.  
-            >>>**Note** This should be improved by modifying the return of the Iterative Value Finder algorithm.  Currently, it creates the entire sequence and then returns the value of the last index.  Why not return the sequence?  
-            >>>O(n): assumes modified Value Finder return  
-        >>Recursion:  
-            >>>O(n2^n)  
-            >>>The algorithm mus calculate the value, O(2^n), n times  
-        >>Memoized Recursion:  
-            >>>O(n): assumes dict lookup ϴ(1)  
-                >>>>Each value finder call is O(1) performed n times  
-                >>>>Since we are repeating the value finder call, we can reuse the cache from the first call and make each value finder call a dict lookup at O(1)  
-            >>>O(n^2): assume dict lookup O(n)  
-                >>>>Again, we are reusing the cache  
-        >>Optimized Cache Memoized Recursion:  
-            >>>O(n)  
-                >>>>Regardless of dict lookup ϴ(1) or O(n) since cache is constant.  
+    Value Finder Algorithms:  
+        Iteration:  
+            O(n)  
+                The algorithm moves through n once  
+        Recursion:  
+            O(2^n)  
+                The algorithm doubles its calls with every increase of n  
+        Memoized Recursion:  
+            **Not Final**  
+            O(n): Assumes that dict lookup ϴ(1)  
+            O(n^2): Assumes dict lookup O(n)  
+        Optimized Cache Memoized Recursion:  
+            O(n)  
+                Regardless of dict lookup ϴ(1) or O(n) since cache size is constant  
+    Sequence Creator Algorithms:  
+        Iteration:  
+            O(n^2)  
+                The algorithm finds the value, O(n), n times.  
+            **Note** This should be improved by modifying the return of the Iterative Value Finder algorithm.  Currently, it creates the entire sequence and then returns the value of the last index.  Why not return the sequence?  
+            O(n): assumes modified Value Finder return  
+        Recursion:  
+            O(n2^n)  
+            The algorithm mus calculate the value, O(2^n), n times  
+        Memoized Recursion:  
+            O(n): assumes dict lookup ϴ(1)  
+                Each value finder call is O(1) performed n times  
+                Since we are repeating the value finder call, we can reuse the cache from the first call and make each value finder call a dict lookup at O(1)  
+            O(n^2): assume dict lookup O(n)  
+                Again, we are reusing the cache  
+        Optimized Cache Memoized Recursion:  
+            O(n)  
+                Regardless of dict lookup ϴ(1) or O(n) since cache is constant.  
 
 
 
