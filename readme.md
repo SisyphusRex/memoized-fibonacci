@@ -40,7 +40,7 @@ Calculated BigO (10/23/24):
         Optimized Cache Memoized Recursion:  
             O(n)  
                 Regardless of dict lookup ϴ(1) or O(n) since cache size is constant  
-    Sequence Creator Algorithms:  
+*     Sequence Creator Algorithms:  
         Iteration:  
             O(n^2)  
                 The algorithm finds the value, O(n), n times.  
