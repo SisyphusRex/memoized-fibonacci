@@ -1,6 +1,6 @@
-"""module for printing colors to terminal"""
-
 # copied from David Barnes colors.py file
+
+"""module for printing colors to terminal"""
 
 # System Imports
 import os
